@@ -14,6 +14,12 @@ const LeagueSchema = new Schema({
             unique: true,
             required: true
         },
+        leagueYear: {
+            type: String,
+            lowercase: false,
+            unique: false,
+            required: true
+        },
         user: [{type: Schema.Types.ObjectId, ref: 'User'}]
     },
     {

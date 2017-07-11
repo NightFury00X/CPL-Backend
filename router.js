@@ -49,7 +49,10 @@ module.exports = function (app) {
     // League Routes
     //= ========================    
     apiRoutes.post('/createleague', LeagueController.create);
-    
+    apiRoutes.get('/allleague', LeagueController.all);
+    apiRoutes.get('/league/:id', LeagueController.findById);
+    apiRoutes.put('/league/:id', LeagueController.update);
+    apiRoutes.delete('/league/:id', LeagueController.delete);
     
     //= ========================
     // User Routes
