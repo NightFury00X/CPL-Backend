@@ -35,13 +35,12 @@ exports.create = function (req, res, next) {
         league.user = '59634f1a1f71d3381421128a';  //User.findById(req.body.user);
         
         
-        league.save((err, league) => {
+        league.save((err) => {
             if (err) {
                 return next(err);
             }
             
             //const userInfo = setUserInfo(user);
-            
             
             //find all
             League.find({}, function (err, leagueData) {
@@ -54,7 +53,7 @@ exports.create = function (req, res, next) {
     });
 };
 
-exports.findById = function (req, res, next) {
+exports.findById = function (req, res) {
     const id = req.params.id;
     if (!id) {
         return res.status(422).send({error: 'Unknown parameter value!'});
@@ -68,9 +67,9 @@ exports.findById = function (req, res, next) {
             league: leagueData
         });
     });
-}
+};
 
-exports.update = function (req, res, next) {
+exports.update = function (req, res) {
     const id = req.params.id;
     if (!id) {
         return res.status(422).send({error: 'Unknown parameter value!'});
@@ -85,7 +84,7 @@ exports.update = function (req, res, next) {
         leagueData.save(function (error) {
             if (error) {
                 res.send(error);
-            }                    
+            }
             
             League.find({}, function (err, leagueData) {
                 res.status(200).json({
@@ -95,16 +94,16 @@ exports.update = function (req, res, next) {
             });
         });
     });
-}
+};
 
-exports.delete = function (req, res, next) {
+exports.delete = function (req, res) {
     const id = req.params.id;
     if (!id) {
         return res.status(422).send({error: 'Unknown parameter value!'});
     }
     //find all
     let query = {_id: id};
-    League.remove(query, function (err, leagueData) {
+    League.remove(query, function (err) {
         if (err) {
             return res.status(500).send({error: 'Something went wrong!'});
         }
@@ -115,9 +114,9 @@ exports.delete = function (req, res, next) {
             });
         });
     });
-}
+};
 
-exports.all = function (req, res, next) {
+exports.all = function (req, res) {
     //find all
     League.find({}, function (err, leagueData) {
         res.status(200).json({
@@ -125,4 +124,4 @@ exports.all = function (req, res, next) {
             league: leagueData
         });
     });
-}
+};
