@@ -1,2 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
+.idea/workspace.xml
 /node_modules/
+.idea/CPL.iml
+.idea/jsLibraryMappings.xml
